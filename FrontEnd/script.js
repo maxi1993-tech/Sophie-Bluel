@@ -17,3 +17,20 @@ fetch("http://localhost:5678/api/works")
 
     }))
 
+const filters = document.querySelector(".filters")
+const buttonAll = `
+    <li>
+        <button type="button">Tous</button>
+    </li>`
+filters.insertAdjacentHTML(`afterbegin`, buttonAll)
+
+fetch("http://localhost:5678/api/categories")
+    .then(reponse => reponse.json())
+    .then(donnees => donnees.forEach(categorie => {
+        const buttonCategorie = `
+            <li>
+                <button type="button">${categorie.name}</button>
+            </li>
+        `
+        filters.insertAdjacentHTML(`beforeend`, buttonCategorie)
+    }))
