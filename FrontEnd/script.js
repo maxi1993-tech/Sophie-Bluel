@@ -28,14 +28,14 @@ function fetchCategories() {
 function createButtons(donnees) {
     const buttonAll = `
         <li>
-            <button type="button">Tous</button>
+            <button class="filters-button" type="button">Tous</button>
         </li>
         `
     filters.insertAdjacentHTML(`afterbegin`, buttonAll)
     donnees.forEach(categorie => {
         const buttonCategorie = `
             <li>
-                <button type="button">${categorie.name}</button>
+                <button class="filters-button" type="button">${categorie.name}</button>
             </li>
         `
         filters.insertAdjacentHTML(`beforeend`, buttonCategorie)
