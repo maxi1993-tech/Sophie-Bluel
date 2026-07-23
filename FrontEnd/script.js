@@ -1,34 +1,30 @@
-const gallery = document.querySelector(".gallery");
+const gallery = document.querySelector(".gallery")
 const filters = document.querySelector(".filters")
+let donneesGallery
 
-function viewGallery() {
-    console.log("bonjour")
-    fetch("http://localhost:5678/api/works")
-        .then(reponse => reponse.json())
-        .then(donnees => donnees.forEach(work => {
-            const project = document.createElement("figure");
-            const projectImg = document.createElement("img");
-            projectImg.setAttribute("src", work.imageUrl);
-            projectImg.setAttribute("alt", work.title);
-            const projectTitle = document.createElement("figcaption");
-            projectTitle.textContent = work.title;
-            gallery.appendChild(project);
-            project.appendChild(projectImg);
-            project.appendChild(projectTitle);
-        }))
-        .catch(error => console.log(error))
-}
 
 function fetchCategories() {
-    console.log("bonjour un")
+    console.log("javascript commence à lire et appelle les données de catégories")
     fetch("http://localhost:5678/api/categories")
         .then(reponse => reponse.json())
         .then(donnees => createButtons(donnees))
         .catch(error => console.log(error))
 }
 
+function fetchGallery() {
+    console.log("javascript continue et appelle les données de gallery")
+    fetch("http://localhost:5678/api/works")
+        .then(reponse => reponse.json())
+        .then(donnees => {
+            console.log("les données sont arrivées")
+            donneesGallery = donnees
+            displayGallery(donnees)
+        })
+        .catch(error => console.log(error))
+}
+
 function createButtons(categories) {
-    console.log("bonjour deux")
+    console.log("javascript récupère les données de catégories et peut enfin les créer")
     const buttonAll = `
         <li>
             <button class="filter-button filter-button-selected" type="button">Tous</button>
@@ -42,22 +38,59 @@ function createButtons(categories) {
             </li>
         `
         filters.insertAdjacentHTML(`beforeend`, buttonCategorie)
-
     })
     listenFilterButtons()
+    console.log("les clics sont ecouter")
+}
+
+
+function displayGallery(donnees) {
+    gallery.replaceChildren()
+    console.log("javascript affiche la gallery")
+    donnees.forEach(work => {
+        const project = document.createElement("figure");
+        const projectImg = document.createElement("img");
+        projectImg.setAttribute("src", work.imageUrl);
+        projectImg.setAttribute("alt", work.title);
+        const projectTitle = document.createElement("figcaption");
+        projectTitle.textContent = work.title;
+        gallery.appendChild(project);
+        project.appendChild(projectImg);
+        project.appendChild(projectTitle);
+    })
 }
 
 function listenFilterButtons() {
-    console.log("bonjour trois")
-    const filterButtonSelected = document.querySelector(".filter-button-selected")
+    console.log("javascript peut maintenant écouter les clics")
     const filterButton = document.querySelectorAll(".filter-button")
     filterButton.forEach(button => {
         button.addEventListener("click", function () {
-            console.log(button)
+            console.trace()
+            console.log(button.textContent)
+            console.log(donneesGallery)
+            filterWorks(button)
+            const filterButtonSelected = document.querySelector(".filter-button-selected")
+            filterButtonSelected.classList.remove("filter-button-selected")
+            button.classList.add("filter-button-selected")
         })
     })
 }
 
-viewGallery()
+function filterWorks(button) {
+    console.log("javascript filtre par catégories")
+    if (button.textContent === "Tous") {
+        console.log("affiche toutes la gallerie")
+        displayGallery(donneesGallery)
+    } else {
+        console.log("affiche la gallerie par filtre")
+        const sort = donneesGallery.filter((work) => work.category.name === button.textContent)
+        displayGallery(sort)
+    }
+}
+
+
 fetchCategories()
-console.log("fin du fichier")
+fetchGallery()
+console.log("javascript a fini de lire le script car il n'attend pas")
+
+
