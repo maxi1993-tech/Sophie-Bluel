@@ -1,30 +1,38 @@
 const gallery = document.querySelector(".gallery")
 const filters = document.querySelector(".filters")
 let donneesGallery
-
-
+//###############################################################################################
+//###############################################################################################
+//###############################################################################################
+console.log("### Script begin ###")
 function fetchCategories() {
-    console.log("javascript commence à lire et appelle les données de catégories")
+    console.log("### fetchCategories ###")
     fetch("http://localhost:5678/api/categories")
         .then(reponse => reponse.json())
         .then(donnees => createButtons(donnees))
         .catch(error => console.log(error))
 }
+//###############################################################################################
+//###############################################################################################
+//###############################################################################################
 
 function fetchGallery() {
-    console.log("javascript continue et appelle les données de gallery")
+    console.log("### fetchGallery ###")
     fetch("http://localhost:5678/api/works")
         .then(reponse => reponse.json())
         .then(donnees => {
-            console.log("les données sont arrivées")
+            console.log("### les données sont arrivées ###")
             donneesGallery = donnees
             displayGallery(donnees)
         })
         .catch(error => console.log(error))
 }
+//###############################################################################################
+//###############################################################################################
+//###############################################################################################
 
 function createButtons(categories) {
-    console.log("javascript récupère les données de catégories et peut enfin les créer")
+    console.log("### createButtons ###")
     const buttonAll = `
         <li>
             <button class="filter-button filter-button-selected" type="button">Tous</button>
@@ -32,6 +40,7 @@ function createButtons(categories) {
         `
     filters.insertAdjacentHTML(`afterbegin`, buttonAll)
     categories.forEach(categorie => {
+        console.log("### forEach ###")
         const buttonCategorie = `
             <li>
                 <button class="filter-button" type="button">${categorie.name}</button>
@@ -40,13 +49,14 @@ function createButtons(categories) {
         filters.insertAdjacentHTML(`beforeend`, buttonCategorie)
     })
     listenFilterButtons()
-    console.log("les clics sont ecouter")
 }
-
+//###############################################################################################
+//###############################################################################################
+//###############################################################################################
 
 function displayGallery(donnees) {
+    console.log("### displayGallery ###")
     gallery.replaceChildren()
-    console.log("javascript affiche la gallery")
     donnees.forEach(work => {
         const project = document.createElement("figure");
         const projectImg = document.createElement("img");
@@ -59,15 +69,16 @@ function displayGallery(donnees) {
         project.appendChild(projectTitle);
     })
 }
+//###############################################################################################
+//###############################################################################################
+//###############################################################################################
 
 function listenFilterButtons() {
-    console.log("javascript peut maintenant écouter les clics")
+    console.log("### listenFilterButtons ###")
     const filterButton = document.querySelectorAll(".filter-button")
     filterButton.forEach(button => {
         button.addEventListener("click", function () {
-            console.trace()
-            console.log(button.textContent)
-            console.log(donneesGallery)
+            console.log("### bouton cliqué ###", button.textContent)
             filterWorks(button)
             const filterButtonSelected = document.querySelector(".filter-button-selected")
             filterButtonSelected.classList.remove("filter-button-selected")
@@ -75,22 +86,27 @@ function listenFilterButtons() {
         })
     })
 }
+//###############################################################################################
+//###############################################################################################
+//###############################################################################################
 
 function filterWorks(button) {
-    console.log("javascript filtre par catégories")
+    console.log("### filterWorks ###")
     if (button.textContent === "Tous") {
-        console.log("affiche toutes la gallerie")
+        console.log("### affiche toutes la gallerie ###")
         displayGallery(donneesGallery)
     } else {
-        console.log("affiche la gallerie par filtre")
+        console.log("### affiche la gallerie par filtre ###")
         const sort = donneesGallery.filter((work) => work.category.name === button.textContent)
         displayGallery(sort)
     }
 }
-
+//###############################################################################################
+//###############################################################################################
+//###############################################################################################
 
 fetchCategories()
 fetchGallery()
-console.log("javascript a fini de lire le script car il n'attend pas")
 
+console.log("### Script End ###")
 
