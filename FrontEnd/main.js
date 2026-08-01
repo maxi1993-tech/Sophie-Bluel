@@ -1,6 +1,6 @@
 import { fetchData } from './api.js'
 import { displayGallery } from './gallery.js'
-import { createButtons } from './filters.js'
+import { createButtons, listenButtons } from './filters.js'
 
 async function start() {
 
@@ -11,6 +11,8 @@ async function start() {
 
         displayGallery(works)
         createButtons(categories)
+        listenButtons()
+        
     } catch (error) {
 
         console.error(error)
