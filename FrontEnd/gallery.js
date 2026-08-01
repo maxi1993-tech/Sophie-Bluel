@@ -7,7 +7,7 @@ export function displayGallery(worksList) {
     // récupère la galerie
     const gallery = document.querySelector(".gallery")
 
-    // vide la gallerie
+    // vide la galerie
     gallery.replaceChildren()
 
     // récupère le template HTML
@@ -16,7 +16,7 @@ export function displayGallery(worksList) {
     // crée un conteneur temporaire en mémoire
     const virtualBox = document.createDocumentFragment()
 
-    // parcourt les projet
+    // parcourt les projets
     worksList.forEach(work => {
 
         // duplique le template
@@ -33,8 +33,6 @@ export function displayGallery(worksList) {
 
         // ajoute le clone au conteneur
         virtualBox.appendChild(workClone)
-        console.log(work)
-        console.dir(virtualBox)
     })
     // ajoute les projets à la galerie
     gallery.appendChild(virtualBox)
