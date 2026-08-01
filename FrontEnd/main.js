@@ -11,7 +11,7 @@ async function start() {
 
         displayGallery(works)
         createButtons(categories)
-        listenButtons()
+        listenButtons(works, displayGallery)
         
     } catch (error) {
 

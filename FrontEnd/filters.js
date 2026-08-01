@@ -44,7 +44,7 @@ export function createButtons(categoriesList) {
     filters.appendChild(virtualBox)
 }
 
-export function listenButtons() {
+export function listenButtons(works, displayGallery) {
     console.log("### listenButtons ###")
 
     // Récupère les boutons
@@ -60,6 +60,8 @@ export function listenButtons() {
             const categoryId = event.currentTarget.dataset.categoryId
 
             setActiveButton(button)
+
+            filterWorks(button, works, displayGallery)
         })
     })
 }
@@ -77,6 +79,18 @@ function setActiveButton(button) {
     // ajoute le bouton sélectionner au bouton click
     button.classList.add("filter-button-selected")
 
+}
+
+function filterWorks(button, works, displayGallery) {
+
+
+    if (Number(button.dataset.categoryId) === 0) {
+
+        displayGallery(works)
+    } else {
+        const filteredWorks = works.filter((work) => work.categoryId === Number(button.dataset.categoryId))
+        displayGallery(filteredWorks)}
+    
 }
 
 //###############################################################################################
