@@ -1,12 +1,15 @@
+import { fetchLogin } from './api.js'
+
 function listenSubmit() {
 
     const form = document.querySelector("form")
 
-    form.addEventListener("submit", (event) => {
+    form.addEventListener("submit", async (event) => {
         event.preventDefault()
         
         const values = getInputValues()
-        console.log(values)
+        const userData = await fetchLogin(values)
+        console.log("reponse api", userData)
     })
 }
 listenSubmit()
