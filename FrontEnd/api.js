@@ -39,15 +39,28 @@ export async function fetchData() {
 
 export async function fetchLogin(user) {
 
-    const response = await fetch(`${API_URL}users/login`, {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ email: user.inputEmail, password: user.inputPassword }),
-    });
+    try {
 
-    const usersData = await response.json()
+        const response = await fetch(`${API_URL}users/login`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ email: user.inputEmail, password: user.inputPassword }),
+        });
 
-    return usersData
+        if (!response.ok) {
+            throw new Error(`Erreur serveur, login ${response.status}`)
+        }
+
+        const usersData = await response.json()
+
+        return usersData
+
+    } catch (error) {
+        // Affiche l'erreur
+        console.error(error)
+        throw error
+
+    }
 }
