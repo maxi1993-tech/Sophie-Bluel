@@ -16,6 +16,16 @@ function listenSubmit() {
             window.location.href = "./index.html"
         } catch (error) {
             console.error(error)
+            
+            let errorLogin = document.querySelector(".error-login")
+            if (!errorLogin) {
+                errorLogin = document.createElement("p")
+                errorLogin.classList.add("error-login")
+                const section = document.querySelector("#contact")
+                section.appendChild(errorLogin)
+            } 
+                errorLogin.textContent = "Veuillez corriger vos identifiants de connexion"
+            
         }
     })
 }
