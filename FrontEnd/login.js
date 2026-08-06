@@ -26,3 +26,20 @@ function redirectUser() {
 
     window.location.href = "./index.html"
 }
+
+function handleError() {
+
+    let errorLogin = document.querySelector(".error-login")
+
+    if (!errorLogin) {
+
+        errorLogin = document.createElement("p")
+        errorLogin.classList.add("error-login")
+
+        const loginButton = document.querySelector(".login-button")
+
+        loginButton.before(errorLogin)
+
+    }
+    errorLogin.textContent = "Veuillez corriger vos identifiants de connexion"
+}
