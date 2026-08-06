@@ -65,3 +65,10 @@ async function handleLogin() {
         handleError()
     }
 }
+
+function startLogin() {
+
+    listenSubmit()
+}
+
+startLogin()
