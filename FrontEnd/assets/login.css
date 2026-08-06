@@ -27,6 +27,10 @@
 	margin: 2em 0 1em 0;
 }
 
+.error-login {
+    text-align: center;
+}
+
 .login-button{
 	font-family: 'Syne';
 	font-weight: 700;
