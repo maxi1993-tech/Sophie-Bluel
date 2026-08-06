@@ -4,3 +4,10 @@ function verifyToken() {
 
     return token
 }
+
+function hideFilters() {
+
+    const filters = document.querySelector(".filters")
+
+    filters.replaceChildren()
+}
