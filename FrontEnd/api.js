@@ -41,6 +41,7 @@ export async function fetchLogin(user) {
 
     try {
 
+        // Lance la requête
         const response = await fetch(`${API_URL}users/login`, {
             method: "POST",
             headers: {
@@ -49,17 +50,19 @@ export async function fetchLogin(user) {
             body: JSON.stringify(user),
         });
 
+        // Vérifie la réponse HTTP
         if (!response.ok) {
             throw new Error(`Erreur serveur, login ${response.status}`)
         }
 
+        // Convertit la réponse en JSON
         const usersData = await response.json()
 
+        // Renvoie les données
         return usersData
 
     } catch (error) {
 
         throw error
-
     }
 }

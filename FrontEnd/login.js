@@ -1,5 +1,6 @@
 import { fetchLogin } from './api.js'
 
+// Écoute l'envoi du formulaire de connexion
 function listenSubmit() {
 
     const loginForm = document.querySelector(".login-form")
@@ -30,6 +31,7 @@ function redirectUser() {
     window.location.href = "./index.html"
 }
 
+// Affiche un message d'erreur si la connexion échoue
 function handleError() {
 
     let errorLogin = document.querySelector(".error-login")
@@ -47,6 +49,7 @@ function handleError() {
     errorLogin.textContent = "Veuillez corriger vos identifiants de connexion"
 }
 
+// Authentifie l'utilisateur puis le redirige
 async function handleLogin() {
 
     try {
