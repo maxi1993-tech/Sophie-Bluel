@@ -8,3 +8,11 @@ function listenSubmit() {
         event.preventDefault()
     })
 }
+
+function getInputValues() {
+
+    const email = document.querySelector("input[type='email']").value
+    const password = document.querySelector("input[type='password']").value
+
+    return { email, password }
+}
