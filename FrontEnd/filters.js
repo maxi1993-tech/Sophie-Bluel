@@ -54,10 +54,8 @@ export function listenButtons(works, displayGallery) {
     buttons.forEach(button => {
 
         // écoute les boutons
-        button.addEventListener("click", (event) => {
+        button.addEventListener("click", () => {
             console.log("### bouton cliqué ###", button.textContent)
-
-            const categoryId = event.currentTarget.dataset.categoryId
 
             setActiveButton(button)
 
@@ -89,8 +87,9 @@ function filterWorks(button, works, displayGallery) {
         displayGallery(works)
     } else {
         const filteredWorks = works.filter((work) => work.categoryId === Number(button.dataset.categoryId))
-        displayGallery(filteredWorks)}
-    
+        displayGallery(filteredWorks)
+    }
+
 }
 
 //###############################################################################################
