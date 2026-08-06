@@ -4,8 +4,11 @@ function listenSubmit() {
 
     const loginForm = document.querySelector(".login-form")
 
-    loginForm.addEventListener("submit", async (event) => {
+    loginForm.addEventListener("submit", (event) => {
+
         event.preventDefault()
+
+        handleLogin()
     })
 }
 
@@ -42,4 +45,23 @@ function handleError() {
 
     }
     errorLogin.textContent = "Veuillez corriger vos identifiants de connexion"
+}
+
+async function handleLogin() {
+
+    try {
+
+        const inputsValues = getInputValues()
+
+        const userData = await fetchLogin(inputsValues)
+
+        saveToken(userData.token)
+
+        redirectUser()
+
+    } catch (error) {
+
+        console.error(error)
+        handleError()
+    }
 }
