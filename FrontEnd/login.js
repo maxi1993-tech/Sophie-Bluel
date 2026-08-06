@@ -16,3 +16,8 @@ function getInputValues() {
 
     return { email, password }
 }
+
+function saveToken(token) {
+
+    sessionStorage.setItem("token", token)
+}
