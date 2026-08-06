@@ -58,8 +58,7 @@ export async function fetchLogin(user) {
         return usersData
 
     } catch (error) {
-        // Affiche l'erreur
-        console.error(error)
+
         throw error
 
     }
