@@ -21,3 +21,8 @@ function saveToken(token) {
 
     sessionStorage.setItem("token", token)
 }
+
+function redirectUser() {
+
+    window.location.href = "./index.html"
+}
