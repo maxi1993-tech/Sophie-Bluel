@@ -205,13 +205,6 @@ input[type="submit"]{
 	border-radius: 60px ;
 }
 
-.password-link {
-	color: black;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-}
-
 .filter-button{
 	font-family: 'Syne';
 	font-weight: 700;
