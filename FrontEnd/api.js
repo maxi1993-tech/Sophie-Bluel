@@ -46,7 +46,7 @@ export async function fetchLogin(user) {
             headers: {
                 "Content-Type": "application/json",
             },
-            body: JSON.stringify({ email: user.inputEmail, password: user.inputPassword }),
+            body: JSON.stringify(user),
         });
 
         if (!response.ok) {
