@@ -36,6 +36,19 @@ function editButton() {
     wrapperPortfolio.appendChild(editionButton)
 }
 
+function logoutUser() {
+
+    const logoutLink = document.querySelector(".logout")
+
+    logoutLink.addEventListener("click", (event) => {
+        event.preventDefault()
+
+        sessionStorage.removeItem("token")
+        window.location.href = "./index.html"
+
+    })
+}
+
 export function loginUser() {
 
     const token = verifyToken()
@@ -47,7 +60,10 @@ export function loginUser() {
         displayBlackBanner()
         hideFilters()
         editButton()
+        logoutUser()
 
         logoutLink.textContent = "logout"
     }
 }
+
+
