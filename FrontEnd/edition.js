@@ -11,8 +11,9 @@ function displayBlackBanner() {
     const editionTemplate = document.querySelector("#edition-template")
 
     const editionClone = editionTemplate.content.cloneNode(true)
-
     const editionContainer = editionClone.querySelector(".edition-container")
+
+    body.classList.add("edition-mode")
 
     body.prepend(editionContainer)
 }
