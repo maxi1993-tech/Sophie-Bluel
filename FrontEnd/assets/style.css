@@ -266,3 +266,27 @@ footer nav ul {
 	font-size: 1rem;
 	font-weight: 400;
 }
+
+/* edit button */
+.wrapper-portfolio {
+	position: relative;
+}
+
+.edition-button {
+	position: absolute;
+	top: 6px;
+	left: 60%;
+	background-color: transparent;
+	border: none;
+	display: flex;
+	gap: 10px;
+	align-items: self-start;
+}
+
+.edition-button-text {
+	font-family: 'Work Sans';
+	font-size: 1rem;
+	line-height: 1.2;
+	font-weight: 400;
+}
+
