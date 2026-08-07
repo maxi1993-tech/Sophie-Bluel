@@ -24,6 +24,17 @@ function hideFilters() {
     filters.replaceChildren()
 }
 
+function editButton() {
+
+    const wrapperPortfolio = document.querySelector(".wrapper-portfolio")
+    const editionButtonTemplate = document.querySelector("#edition-button-template")
+
+    const editionButtonClone = editionButtonTemplate.content.cloneNode(true)
+
+    const editionButton = editionButtonClone.querySelector(".edition-button")
+
+    wrapperPortfolio.appendChild(editionButton)
+}
 
 export function loginUser() {
 
@@ -33,5 +44,6 @@ export function loginUser() {
 
         displayBlackBanner()
         hideFilters()
+        editButton()
     }
 }
