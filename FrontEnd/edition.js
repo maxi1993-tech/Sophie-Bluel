@@ -11,11 +11,11 @@ function displayBlackBanner() {
     const editionTemplate = document.querySelector("#edition-template")
 
     const editionClone = editionTemplate.content.cloneNode(true)
-    const editionContainer = editionClone.querySelector(".edition-container")
+    
 
     body.classList.add("edition-mode")
 
-    body.prepend(editionContainer)
+    body.prepend(editionClone)
 }
 
 function hideFilters() {
@@ -32,9 +32,7 @@ function editButton() {
 
     const editionButtonClone = editionButtonTemplate.content.cloneNode(true)
 
-    const editionButton = editionButtonClone.querySelector(".edition-button")
-
-    wrapperPortfolio.appendChild(editionButton)
+    wrapperPortfolio.appendChild(editionButtonClone)
 }
 
 function logoutUser() {
