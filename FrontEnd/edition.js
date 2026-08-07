@@ -40,10 +40,14 @@ export function loginUser() {
 
     const token = verifyToken()
 
+    const logoutLink = document.querySelector(".logout")
+
     if (token) {
 
         displayBlackBanner()
         hideFilters()
         editButton()
+
+        logoutLink.textContent = "logout"
     }
 }
