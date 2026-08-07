@@ -1,6 +1,7 @@
 import { fetchData } from './api.js'
 import { displayGallery } from './gallery.js'
 import { createButtons, listenButtons } from './filters.js'
+import { loginUser } from './edition.js'
 
 async function start() {
 
@@ -12,6 +13,8 @@ async function start() {
         displayGallery(works)
         createButtons(categories)
         listenButtons(works, displayGallery)
+
+        loginUser()
         
     } catch (error) {
 
