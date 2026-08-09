@@ -1,4 +1,4 @@
-
+// Construit et affiche la galerie
 export function displayGallery(worksList) {
 
     // récupère la galerie

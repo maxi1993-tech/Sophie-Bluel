@@ -1,6 +1,6 @@
-
+// Construit les boutons de filtres par catégorie
 export function createButtons(categoriesList) {
-    
+
     // récupère conteneur filters
     const filters = document.querySelector(".filters")
 
@@ -41,6 +41,7 @@ export function createButtons(categoriesList) {
     filters.appendChild(virtualBox)
 }
 
+// Écoute l'événement "click" sur chaque bouton
 export function listenButtons(works, displayGallery) {
 
     // Récupère les boutons
@@ -60,6 +61,7 @@ export function listenButtons(works, displayGallery) {
     })
 }
 
+// Déplace la classe du bouton sélectionné
 function setActiveButton(button) {
 
     // récupère le bouton sélectionner
@@ -75,8 +77,10 @@ function setActiveButton(button) {
 
 }
 
+// Filtre les projets par rapport à la catégorie cliquée
 function filterWorks(button, works, displayGallery) {
-
+    
+    // dataset renvoie une chaîne, Number la convertit pour comparer avec categoryId
     if (Number(button.dataset.categoryId) === 0) {
 
         displayGallery(works)

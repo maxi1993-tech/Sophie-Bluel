@@ -1,5 +1,6 @@
 const API_URL = "http://localhost:5678/api/"
 
+// Récupère les données API de catégories et projets
 export async function fetchData() {
 
     try {
@@ -32,6 +33,7 @@ export async function fetchData() {
     }
 }
 
+// Envoie les données d'authentification de l'utilisateur
 export async function fetchLogin(user) {
 
     try {
@@ -43,7 +45,7 @@ export async function fetchLogin(user) {
                 "Content-Type": "application/json",
             },
             body: JSON.stringify(user),
-        });
+        })
 
         // Vérifie la réponse HTTP
         if (!response.ok) {
