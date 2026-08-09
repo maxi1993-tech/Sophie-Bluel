@@ -1,9 +1,6 @@
-//###############################################################################################
-//###############################################################################################
-//###############################################################################################
 
 export function displayGallery(worksList) {
-    console.log("### displayGallery ###")
+
     // récupère la galerie
     const gallery = document.querySelector(".gallery")
 
@@ -34,6 +31,7 @@ export function displayGallery(worksList) {
         // ajoute le clone au conteneur
         virtualBox.appendChild(workClone)
     })
+    console.log("### nombre de travaux affichés ###", worksList.length)
     // ajoute les projets à la galerie
     gallery.appendChild(virtualBox)
 }

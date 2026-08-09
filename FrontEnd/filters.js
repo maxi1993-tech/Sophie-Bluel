@@ -1,9 +1,6 @@
-//###############################################################################################
-//###############################################################################################
-//###############################################################################################
 
 export function createButtons(categoriesList) {
-    console.log("### createButtons ###")
+    
     // récupère conteneur filters
     const filters = document.querySelector(".filters")
 
@@ -45,7 +42,6 @@ export function createButtons(categoriesList) {
 }
 
 export function listenButtons(works, displayGallery) {
-    console.log("### listenButtons ###")
 
     // Récupère les boutons
     const buttons = document.querySelectorAll(".filter-button")
@@ -55,7 +51,7 @@ export function listenButtons(works, displayGallery) {
 
         // écoute les boutons
         button.addEventListener("click", () => {
-            console.log("### bouton cliqué ###", button.textContent)
+            console.log("### bouton cliqué ###", button.textContent, Number(button.dataset.categoryId))
 
             setActiveButton(button)
 
@@ -65,7 +61,7 @@ export function listenButtons(works, displayGallery) {
 }
 
 function setActiveButton(button) {
-    console.log("### setActiveButton ###")
+
     // récupère le bouton sélectionner
     const buttonSelected = document.querySelector(".filter-button-selected")
 
@@ -81,7 +77,6 @@ function setActiveButton(button) {
 
 function filterWorks(button, works, displayGallery) {
 
-
     if (Number(button.dataset.categoryId) === 0) {
 
         displayGallery(works)
@@ -89,9 +84,6 @@ function filterWorks(button, works, displayGallery) {
         const filteredWorks = works.filter((work) => work.categoryId === Number(button.dataset.categoryId))
         displayGallery(filteredWorks)
     }
-
 }
 
-//###############################################################################################
-//###############################################################################################
-//###############################################################################################
+

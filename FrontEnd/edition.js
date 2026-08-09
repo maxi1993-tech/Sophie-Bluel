@@ -44,7 +44,6 @@ function logoutUser() {
 
         sessionStorage.removeItem("token")
         window.location.href = "./index.html"
-
     })
 }
 
@@ -64,5 +63,6 @@ export function loginUser() {
         logoutLink.textContent = "logout"
     }
 }
+
 
 
