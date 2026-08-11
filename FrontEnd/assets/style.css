@@ -378,3 +378,108 @@ footer nav ul {
 	line-height: 1.2;
 	font-weight: 400;
 }
+
+/* modal */
+#modal-container {
+	display: block;
+}
+
+#modal-container.is-active {
+	display: block;
+}
+
+.modal-overlay {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100vw;
+	height: 100vh;
+	background-color: rgba(0, 0, 0, 0.3);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	z-index: 1000;
+}
+
+#modal-wrapper {
+	background-color: #FFFFFF;
+	max-width: 630px;
+	width: 100%;
+	border-radius: 10px;
+	padding: 60px 105px 45px 105px;
+	position: relative;
+	box-sizing: border-box;
+}
+
+#modal-gallery,
+#modal-form {
+	display: none;
+}
+
+#modal-gallery.is-active,
+#modal-form.is-active {
+	display: block;
+}
+
+#modal-wrapper h3 {
+	font-family: 'Work', sans-serif;
+	font-weight: 400;
+	font-size: 26px;
+	color: #000000;
+	text-align: center;
+	margin-bottom: 45px;
+}
+
+#modal-close {
+	width: 24px;
+	height: 24px;
+	position: absolute;
+	top: 26px;
+	right: 30px;
+	font-size: 17px;
+	background: none;
+	border: none;
+	cursor: pointer;
+	color: #000000;
+
+}
+
+#modal-back {
+	position: absolute;
+	top: 26px;
+	left: 30px;
+	background: none;
+	border: none;
+	font-size: 20px;
+	cursor: pointer;
+	color: #000000;
+}
+
+#modal-next,
+.button-validate {
+	font-family: 'Syne', sans-serif;
+	font-weight: 700;
+	font-size: 14px;
+	color: #FFFFFF;
+	background-color: #1D6154;
+	border: none;
+	border-radius: 60px;
+	height: 36px;
+	min-width: 237px;
+	margin: 0 auto;
+	display: block;
+	cursor: pointer;
+	transition: background-color 0.2s;
+}
+
+#modal-next:hover,
+.button-validate:hover {
+	background-color: #0E3F35;
+}
+
+.modal-separator {
+	width: 100%;
+	border: none;
+	border-top: 1px solid #B3B3B3;
+	margin: 45px 0 25px 0;
+}
