@@ -381,7 +381,7 @@ footer nav ul {
 
 /* modal */
 #modal-container {
-	display: block;
+	display: none;
 }
 
 #modal-container.is-active {
@@ -406,19 +406,21 @@ footer nav ul {
 	max-width: 630px;
 	width: 100%;
 	border-radius: 10px;
-	padding: 60px 105px 45px 105px;
+	padding: 0 105px;
 	position: relative;
 	box-sizing: border-box;
 }
 
 #modal-gallery,
 #modal-form {
-	display: block;
+	display: none;
+	margin: 0;
+	padding: 70px 0 50px 0;
 }
 
 #modal-gallery.is-active,
 #modal-form.is-active {
-	display: none;
+	display: block;
 }
 
 #modal-wrapper h3 {
@@ -427,7 +429,7 @@ footer nav ul {
 	font-size: 26px;
 	color: #000000;
 	text-align: center;
-	margin-bottom: 45px;
+	margin-bottom: 35px;
 }
 
 #modal-close {
@@ -487,6 +489,88 @@ footer nav ul {
 	width: 100%;
 	border: none;
 	border-top: 1px solid #B3B3B3;
-	margin: 45px 0 25px 0;
+	margin: 0;
+	margin-bottom: 40px;
 }
 
+#modal-default-content,
+#image-preview {
+	display: none;
+}
+
+#modal-default-content.is-active {
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+	align-items: center;
+	color: #B9C5CC;
+	background-color: #E8F1F6;
+	border-radius: 3px;
+	padding: 20px 0;
+	margin-bottom: 30px;
+}
+
+#modal-default-content i {
+	font-size: 68px;
+}
+
+#modal-file-label {
+	background-color: #CBD6DC;
+	color: #306685;
+	border-radius: 50px;
+	padding: 10px 33px;
+	font-weight: 700;
+	font-size: 14px;
+	cursor: pointer;
+}
+
+#modal-input {
+	display: none;
+}
+
+#modal-default-content p {
+	font-size: 10px;
+	color: #444444;
+	margin: 0;
+}
+
+#image-preview.is-active {
+	display: block;
+	max-height: 160px;
+	width: auto;
+	object-fit: contain;
+}
+
+#modal-add-form {
+	display: flex;
+	flex-direction: column;
+}
+
+.form-group {
+	display: flex;
+	flex-direction: column;
+}
+
+.form-group label {
+	font-weight: 500;
+	font-size: 14px;
+	color: #3D3D3D;
+	text-align: left;
+	margin-bottom: 10px;
+}
+
+.form-group input,
+.form-group select {
+	height: 50px;
+	background-color: #FFFFFF;
+	border: none;
+	box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
+	padding: 0 15px;
+	font-size: 14px;
+	box-sizing: border-box;
+	margin-bottom: 45px;
+}
+
+#modal-title-input {
+	margin-bottom: 25px;
+}
