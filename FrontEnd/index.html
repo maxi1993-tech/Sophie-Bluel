@@ -9,6 +9,7 @@
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Work+Sans&display=swap"
 		rel="stylesheet">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.3.0/css/all.min.css">
 	<meta name="description" content="">
 	<link rel="stylesheet" href="./assets/style.css">
 </head>
@@ -103,6 +104,58 @@
 			</ul>
 		</nav>
 	</footer>
+
+	<aside id="modal-container" aria-hidden="true">
+
+		<div class="modal-overlay">
+
+			<div id="modal-wrapper" role="dialog" aria-modal="true" aria-labelledby="modal-gallery-title">
+
+				<button id="modal-close" aria-label="Fermer la fenêtre modale"><i class="fa-solid fa-xmark"
+						aria-hidden="true"></i></button>
+
+				<section id="modal-gallery" class="is-active">
+					<h3 id="modal-gallery-title">Galerie photo</h3>
+					<div class="modal-gallery-miniatures"></div>
+					<hr class="modal-separator">
+					<button id="modal-next">Ajouter une photo</button>
+				</section>
+
+				<section id="modal-form">
+					<h3 id="modal-form-title">Ajout photo</h3>
+					<button id="modal-back" aria-label="Retour à la galerie"><i class="fa-solid fa-arrow-left"
+							aria-hidden="true"></i></button>
+					<form id="modal-add-form" method="POST">
+
+						<div id="modal-default-content" class="is-active">
+							<i class="fa-regular fa-image" aria-hidden="true"></i>
+							<label id="modal-file-label" for="modal-input">+ Ajouter photo</label>
+							<input type="file" id="modal-input" accept="image/png, image/jpeg" required>
+							<p>jpg, png : 4mo max</p>
+						</div>
+
+						<div class="form-group">
+							<label for="modal-title-input">Titre</label>
+							<input type="text" id="modal-title-input" required>
+						</div>
+
+						<div class="form-group">
+							<label for="modal-category-select">Catégorie</label>
+							<select id="modal-category-select" required>
+								<option value="" disabled selected hidden></option>
+							</select>
+						</div>
+
+						<hr class="modal-separator">
+						<button id="modal-validate-form" class="button-validate" type="submit">Valider</button>
+					</form>
+				</section>
+
+			</div>
+
+		</div>
+
+	</aside>
 	<script type="module" src="./main.js"></script>
 </body>
 
