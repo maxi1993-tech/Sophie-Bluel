@@ -80,7 +80,11 @@ export function startModal(works) {
     const buttonArrowLeft = document.querySelector(".button-back")
     const buttonExit = document.querySelector(".button-close")
 
-    listenClick(buttonModifier, () => openModal(works))
+    if (buttonModifier) {
+
+        listenClick(buttonModifier, () => openModal(works))
+    }
+
     listenClick(buttonAddPicture, switchModal)
     listenClick(buttonArrowLeft, switchModal)
     listenClick(buttonExit, closeModal)
