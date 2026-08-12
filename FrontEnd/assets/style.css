@@ -574,3 +574,42 @@ footer nav ul {
 #modal-title-input {
 	margin-bottom: 25px;
 }
+
+.modal-gallery-miniatures {
+	display: grid;
+	grid-template-columns: repeat(5, 1fr);
+	gap: 20px 10px;
+	margin-bottom: 40px;
+}
+
+.modal-gallery-miniatures figure {
+	position: relative;
+	margin: 0;
+}
+
+.modal-gallery-miniatures img {
+	width: 100%;
+	height: 100px;
+	object-fit: cover;
+}
+
+.modal-gallery-miniatures .delete-button {
+	position: absolute;
+	top: 6px;
+	right: 6px;
+	background-color: #000000;
+	color: #FFFFFF;
+	border: none;
+	border-radius: 2px;
+	padding: 5px 6px;
+	font-size: 11px;
+	cursor: pointer;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.modal-gallery-miniatures .delete-button:hover {
+	background-color: #cc0000;
+}
+
