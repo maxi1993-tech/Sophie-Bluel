@@ -40,6 +40,7 @@ function handleError() {
 
         errorLogin = document.createElement("p")
         errorLogin.classList.add("error-login")
+        errorLogin.setAttribute("aria-live", "polite")
 
         const loginButton = document.querySelector(".login-button")
 
