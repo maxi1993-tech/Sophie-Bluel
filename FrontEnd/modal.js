@@ -27,3 +27,25 @@ function startModal(works) {
     modalContainer.classList.add("is-active")
     modalContainer.ariaHidden = "false"
 }
+
+function switchModal() {
+
+    const modalWrapper = document.querySelector("#modal-wrapper")
+    const modalGallery = document.querySelector("#modal-gallery")
+    const modalForm = document.querySelector("#modal-form")
+
+    let modalActive
+
+    modalGallery.classList.toggle("is-active")
+    modalForm.classList.toggle("is-active")
+
+    if (modalGallery.classList.contains("is-active")) {
+        modalActive = modalGallery
+    } else {
+        modalActive = modalForm
+    }
+
+    const modalTitleActive = modalActive.querySelector("h3")
+
+    modalWrapper.setAttribute("aria-labelledby", modalTitleActive.id)
+}
