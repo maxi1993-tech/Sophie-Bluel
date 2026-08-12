@@ -27,8 +27,7 @@ export async function fetchData() {
             categories, works
         }
     } catch (error) {
-        // Affiche l'erreur
-        console.error(error)
+
         throw error
     }
 }
