@@ -1,4 +1,4 @@
-function verifyToken() {
+function getToken() {
 
     const token = sessionStorage.getItem("token")
 
@@ -47,9 +47,9 @@ function logoutUser() {
     })
 }
 
-export function loginUser() {
+export function setupEditionMode() {
 
-    const token = verifyToken()
+    const token = getToken()
 
     const logoutLink = document.querySelector(".logout")
 
