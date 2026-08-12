@@ -21,11 +21,13 @@ function closeModal() {
     modalContainer.ariaHidden = "true"
 }
 
-function startModal(works) {
+function openModal(works) {
 
     const modalContainer = document.querySelector("#modal-container")
     modalContainer.classList.add("is-active")
     modalContainer.ariaHidden = "false"
+
+    displayGalleryModal(works)
 }
 
 function switchModal() {
@@ -69,4 +71,18 @@ function displayGalleryModal(works) {
 `
     })
     modalGalleryMiniatures.insertAdjacentHTML("beforeend", modalMiniatures)
+}
+
+export function startModal(works) {
+
+    const buttonModifier = document.querySelector(".edition-button")
+    const buttonAddPicture = document.querySelector(".button-next")
+    const buttonArrowLeft = document.querySelector(".button-back")
+    const buttonExit = document.querySelector(".button-close")
+
+    listenClick(buttonModifier, () => openModal(works))
+    listenClick(buttonAddPicture, switchModal)
+    listenClick(buttonArrowLeft, switchModal)
+    listenClick(buttonExit, closeModal)
+    listenOverlay()
 }
