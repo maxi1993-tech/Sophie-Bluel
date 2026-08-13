@@ -81,13 +81,16 @@ function setActiveButton(button) {
 function filterWorks(button, works, displayGallery) {
     
     // dataset renvoie une chaîne, Number la convertit pour comparer avec categoryId
-    if (Number(button.dataset.categoryId) === 0) {
+    const buttonId = Number(button.dataset.categoryId)
+
+    if (buttonId === 0) {
 
         displayGallery(works)
     } else {
-        const filteredWorks = works.filter((work) => work.categoryId === Number(button.dataset.categoryId))
+        const filteredWorks = works.filter((work) => work.categoryId === buttonId)
         displayGallery(filteredWorks)
     }
 }
+
 
 
