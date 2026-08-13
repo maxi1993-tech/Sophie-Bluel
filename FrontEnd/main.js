@@ -8,7 +8,7 @@ async function start() {
 
     try {
 
-        const { categories, works } = await fetchData()
+        let { categories, works } = await fetchData()
 
         displayGallery(works)
         createButtons(categories)
