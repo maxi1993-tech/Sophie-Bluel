@@ -62,7 +62,7 @@ function displayGalleryModal(works) {
     works.forEach(work => {
 
         modalMiniatures += `
-<figure id="modal-work-${work.id}">
+<figure>
 	<img src="${work.imageUrl}" alt="${work.title}">
 	<button class="delete-button" data-work-id="${work.id}" aria-label="Supprimer le projet ${work.title}">
 		<i class="fa-solid fa-trash-can" aria-hidden="true"></i>
