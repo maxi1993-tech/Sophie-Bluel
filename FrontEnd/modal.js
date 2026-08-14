@@ -58,7 +58,7 @@ function displayGalleryModal(works) {
 
         modalMiniatures += `
 <figure>
-	<img src="${work.imageUrl}" alt="${work.title}">
+	<img src="${work.imageUrl}" alt="">
 	<button class="delete-button" data-work-id="${work.id}" aria-label="Supprimer le projet ${work.title}">
 		<i class="fa-solid fa-trash-can" aria-hidden="true"></i>
 	</button>
