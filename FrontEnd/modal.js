@@ -1,8 +1,3 @@
-function listenClick(button, fn) {
-
-    button.addEventListener("click", fn)
-}
-
 function listenOverlay() {
 
     const modalOverlay = document.querySelector(".modal-overlay")
@@ -82,11 +77,11 @@ export function startModal(works) {
 
     if (buttonModifier) {
 
-        listenClick(buttonModifier, () => openModal(works))
+        buttonModifier.addEventListener("click", () => openModal(works))
     }
 
-    listenClick(buttonAddPicture, switchModal)
-    listenClick(buttonArrowLeft, switchModal)
-    listenClick(buttonExit, closeModal)
+    buttonAddPicture.addEventListener("click", switchModal)
+    buttonArrowLeft.addEventListener("click", switchModal)
+    buttonExit.addEventListener("click", closeModal)
     listenOverlay()
 }
