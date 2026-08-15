@@ -23,6 +23,7 @@ function openModal(works) {
     modalContainer.ariaHidden = "false"
 
     displayGalleryModal(works)
+    listenDeleteButtons()
 }
 
 function switchModal() {
@@ -84,4 +85,18 @@ export function startModal(works) {
     buttonArrowLeft.addEventListener("click", switchModal)
     buttonExit.addEventListener("click", closeModal)
     listenOverlay()
+}
+
+
+function listenDeleteButtons() {
+
+    const buttonsDelete = document.querySelectorAll(".delete-button")
+
+    buttonsDelete.forEach(buttonDelete => {
+
+        buttonDelete.addEventListener("click", () => {
+
+            const idDelete = buttonDelete.dataset.workId
+        })
+    })
 }
