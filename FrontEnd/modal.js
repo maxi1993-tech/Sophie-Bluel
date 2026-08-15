@@ -1,3 +1,5 @@
+import { fetchDelete } from './api.js'
+
 function listenOverlay() {
 
     const modalOverlay = document.querySelector(".modal-overlay")
@@ -96,6 +98,7 @@ function listenDeleteButtons(works) {
         buttonDelete.addEventListener("click", () => {
 
             const idDelete = buttonDelete.dataset.workId
+            handleDelete(idDelete, works)
         })
     })
 }
@@ -105,9 +108,23 @@ async function handleDelete(id, works) {
     try {
 
         await fetchDelete(id)
+        updateGallery(id, works)
 
     } catch (error) {
 
         console.error(error)
     }
+}
+
+function updateGallery(id, works) {
+
+    const workGallery = document.querySelector(`.gallery figure[data-work-id="${id}"]`)
+    const workGalleryModal = document.querySelector(`.modal-gallery-miniatures figure[data-work-id="${id}"]`)
+
+    workGallery.remove()
+    workGalleryModal.remove()
+
+    const positionWorkDelete = works.findIndex(work => work.id === Number(id))
+
+    works.splice(positionWorkDelete, 1)
 }
