@@ -62,3 +62,30 @@ export async function fetchLogin(user) {
         throw error
     }
 }
+
+// Supprime le travail
+export async function fetchDelete(id) {
+
+    try {
+
+        // Lance la requête
+        const response = await fetch(`${API_URL}works/${id}`, {
+            method: "DELETE",
+            headers: {
+                Authorization: `Bearer ${sessionStorage.getItem("token")}`
+            },
+        })
+
+        // Vérifie la réponse HTTP
+        if (!response.ok) {
+            throw new Error(`Erreur serveur, delete ${response.status}`)
+        }
+
+    } catch (error) {
+
+        throw error
+    }
+
+}
+
+
