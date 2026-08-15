@@ -20,10 +20,12 @@ export function displayGallery(worksList) {
         const workClone = workTemplate.content.cloneNode(true)
 
         // récupère les éléments du clone
+        const cloneFigure = workClone.querySelector("figure")
         const cloneImg = workClone.querySelector("img")
         const cloneFigcaption = workClone.querySelector("figcaption")
 
         // remplit le clone
+        cloneFigure.dataset.workId = work.id
         cloneImg.src = work.imageUrl
         cloneImg.alt = work.title
         cloneFigcaption.textContent = work.title
