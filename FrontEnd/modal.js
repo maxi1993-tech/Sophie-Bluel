@@ -113,6 +113,7 @@ async function handleDelete(id, works) {
     } catch (error) {
 
         console.error(error)
+        alert("La suppression a échoué, veuillez réessayer")
     }
 }
 
