@@ -71,12 +71,13 @@ function displayGalleryModal(works) {
     modalGalleryMiniatures.insertAdjacentHTML("beforeend", modalMiniatures)
 }
 
-export function startModal(works) {
+export function startModal(works, categories) {
 
     const buttonModifier = document.querySelector(".edition-button")
     const buttonAddPicture = document.querySelector(".button-next")
     const buttonArrowLeft = document.querySelector(".button-back")
     const buttonExit = document.querySelector(".button-close")
+    const modalselect = document.querySelector("#modal-category-select")
 
     if (buttonModifier) {
 
@@ -87,6 +88,15 @@ export function startModal(works) {
     buttonArrowLeft.addEventListener("click", switchModal)
     buttonExit.addEventListener("click", closeModal)
     listenOverlay()
+
+    categories.forEach(categorie => {
+
+        const optionModal = `
+        
+        <option value="${categorie.id}">${categorie.name}</option>
+        `
+        modalselect.insertAdjacentHTML("beforeend", optionModal)
+    })
 }
 
 function listenDeleteButtons(works) {
