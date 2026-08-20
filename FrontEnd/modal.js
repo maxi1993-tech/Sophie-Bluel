@@ -88,6 +88,7 @@ export function startModal(works, categories) {
     buttonArrowLeft.addEventListener("click", switchModal)
     buttonExit.addEventListener("click", closeModal)
     listenOverlay()
+    handleValidation()
 
     categories.forEach(categorie => {
 
@@ -138,4 +139,40 @@ function updateGallery(id, works) {
     const positionWorkDelete = works.findIndex(work => work.id === Number(id))
 
     works.splice(positionWorkDelete, 1)
+}
+
+function handleValidation() {
+
+    const formModal = document.querySelector("#modal-add-form")
+    const titleModal = document.querySelector("#modal-title-input")
+    const fileModal = document.querySelector("#modal-input")
+    const selectModal = document.querySelector("#modal-category-select")
+
+    formModal.addEventListener("submit", (event) => {
+        event.preventDefault()
+
+        if (!fileModal.files[0] || !titleModal.value || !selectModal.value) {
+
+            let errorModal = document.querySelector("#modal-error-message")
+
+            if (!errorModal) {
+
+                errorModal = document.createElement("p")
+                errorModal.id = "modal-error-message"
+                errorModal.setAttribute("aria-live", "polite")
+
+                selectModal.after(errorModal)
+            }
+
+            errorModal.textContent = "Veuillez remplir tous les champs obligatoires."
+            return
+        }
+
+        const existingError = document.querySelector("#modal-error-message")
+
+        if (existingError) {
+            existingError.remove()
+        }
+    })
+
 }
