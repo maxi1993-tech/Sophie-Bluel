@@ -1,4 +1,4 @@
-import { fetchDelete } from './api.js'
+import { fetchAdd, fetchDelete } from './api.js'
 
 function listenOverlay() {
 
@@ -148,7 +148,7 @@ function handleValidation() {
     const fileModal = document.querySelector("#modal-input")
     const selectModal = document.querySelector("#modal-category-select")
 
-    formModal.addEventListener("submit", (event) => {
+    formModal.addEventListener("submit", async (event) => {
         event.preventDefault()
 
         if (!fileModal.files[0] || !titleModal.value || !selectModal.value) {
@@ -173,6 +173,16 @@ function handleValidation() {
         if (existingError) {
             existingError.remove()
         }
-    })
 
+        const formDataModal = new FormData(formModal)
+
+        try {
+
+            const data = await fetchAdd(formDataModal)
+        } catch (error) {
+
+            console.error(error)
+        }
+    })
 }
+

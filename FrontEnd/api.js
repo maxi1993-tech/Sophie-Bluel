@@ -88,4 +88,32 @@ export async function fetchDelete(id) {
 
 }
 
+export async function fetchAdd(data) {
+
+    try {
+
+        // Lance la requête
+        const response = await fetch(`${API_URL}works/`, {
+            method: "POST",
+            headers: {
+                Authorization: `Bearer ${sessionStorage.getItem("token")}`
+            },
+            body: data
+        })
+
+        // Vérifie la réponse HTTP
+        if (!response.ok) {
+            throw new Error(`Erreur serveur, add ${response.status}`)
+        }
+
+        const workCreate = await response.json()
+
+        return workCreate
+
+    } catch (error) {
+
+        throw error
+    }
+
+}
 
