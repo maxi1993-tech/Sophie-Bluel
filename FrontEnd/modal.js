@@ -89,6 +89,7 @@ export function startModal(works, categories) {
     buttonExit.addEventListener("click", closeModal)
     listenOverlay()
     handleValidation()
+    displayPreview()
 
     categories.forEach(categorie => {
 
@@ -186,3 +187,36 @@ function handleValidation() {
     })
 }
 
+function displayPreview() {
+
+    const formModal = document.querySelector("#modal-add-form")
+    const fileModal = document.querySelector("#modal-input")
+    const defaultContent = document.querySelector("#modal-default-content")
+
+    fileModal.addEventListener("change", () => {
+
+        const file = fileModal.files[0]
+        const urlPreview = URL.createObjectURL(file)
+
+        const boxImagePreview = document.createElement("div")
+        const imagePreview = document.createElement("img")
+
+        boxImagePreview.id = "box-image-preview"
+        imagePreview.src = urlPreview
+        imagePreview.id = "image-preview"
+        imagePreview.alt = ""
+
+        defaultContent.classList.remove("is-active")
+
+        const existingBox = document.querySelector("#box-image-preview")
+
+        if (existingBox) {
+            existingBox.remove()
+        }
+
+        formModal.prepend(boxImagePreview)
+        boxImagePreview.appendChild(imagePreview)
+
+        imagePreview.classList.add("is-active")
+    })
+}

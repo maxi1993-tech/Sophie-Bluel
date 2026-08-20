@@ -508,6 +508,13 @@ footer nav ul {
 	font-size: 68px;
 }
 
+#box-image-preview {
+	background-color: #E8F1F6;
+	display: flex;
+	justify-content: center;
+	margin-bottom: 30px;
+}
+
 #modal-file-label {
 	background-color: #CBD6DC;
 	color: #306685;
