@@ -180,6 +180,16 @@ function handleValidation() {
         try {
 
             const data = await fetchAdd(formDataModal)
+            const defaultContent = document.querySelector("#modal-default-content")
+            const boxImagePreview = document.querySelector("#box-image-preview")
+
+            fileModal.value = ""
+            titleModal.value = ""
+            selectModal.value = ""
+
+            defaultContent.classList.add("is-active")
+            boxImagePreview.remove()
+
         } catch (error) {
 
             console.error(error)
