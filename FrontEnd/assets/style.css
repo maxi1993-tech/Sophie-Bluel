@@ -607,3 +607,7 @@ footer nav ul {
 	background-color: #cc0000;
 }
 
+#modal-error-message {
+	text-align: center;
+	margin-top: -14px;
+}
