@@ -615,6 +615,7 @@ footer nav ul {
 }
 
 .modal-error-message {
+	color: #A80000;
 	text-align: center;
 	margin-top: -14px;
 }
