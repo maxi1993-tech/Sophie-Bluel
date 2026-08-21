@@ -28,7 +28,7 @@ function openModal(works) {
     listenDeleteButtons(works)
 }
 
-function switchModal() {
+function switchModal(works) {
 
     const modalWrapper = document.querySelector("#modal-wrapper")
     const modalGallery = document.querySelector("#modal-gallery")
@@ -48,6 +48,9 @@ function switchModal() {
     const modalTitleActive = modalActive.querySelector("h3")
 
     modalWrapper.setAttribute("aria-labelledby", modalTitleActive.id)
+
+    displayGalleryModal(works)
+    listenDeleteButtons(works)
 }
 
 function displayGalleryModal(works) {
@@ -71,7 +74,7 @@ function displayGalleryModal(works) {
     modalGalleryMiniatures.insertAdjacentHTML("beforeend", modalMiniatures)
 }
 
-export function startModal(works, categories) {
+export function startModal(works, categories, displayGallery) {
 
     const buttonModifier = document.querySelector(".edition-button")
     const buttonAddPicture = document.querySelector(".button-next")
@@ -84,11 +87,11 @@ export function startModal(works, categories) {
         buttonModifier.addEventListener("click", () => openModal(works))
     }
 
-    buttonAddPicture.addEventListener("click", switchModal)
-    buttonArrowLeft.addEventListener("click", switchModal)
+    buttonAddPicture.addEventListener("click", () => switchModal(works))
+    buttonArrowLeft.addEventListener("click", () => switchModal(works))
     buttonExit.addEventListener("click", closeModal)
     listenOverlay()
-    handleValidation()
+    handleValidation(works, displayGallery)
     displayPreview()
 
     categories.forEach(categorie => {
@@ -142,7 +145,7 @@ function updateGallery(id, works) {
     works.splice(positionWorkDelete, 1)
 }
 
-function handleValidation() {
+function handleValidation(works, displayGallery) {
 
     const formModal = document.querySelector("#modal-add-form")
     const titleModal = document.querySelector("#modal-title-input")
@@ -183,12 +186,15 @@ function handleValidation() {
             const defaultContent = document.querySelector("#modal-default-content")
             const boxImagePreview = document.querySelector("#box-image-preview")
 
+            works.push(data)
+
             fileModal.value = ""
             titleModal.value = ""
             selectModal.value = ""
 
             defaultContent.classList.add("is-active")
             boxImagePreview.remove()
+            displayGallery(works)
 
         } catch (error) {
 

@@ -15,7 +15,7 @@ async function start() {
         listenButtons(works, displayGallery)
 
         setupEditionMode()
-        startModal(works, categories)
+        startModal(works, categories, displayGallery)
 
     } catch (error) {
 
