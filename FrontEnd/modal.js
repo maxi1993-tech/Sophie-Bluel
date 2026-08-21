@@ -127,8 +127,10 @@ async function handleDelete(id, works) {
 
     } catch (error) {
 
+        const modalGallery = document.querySelector(".modal-gallery-miniatures")
+
         console.error(error)
-        alert("La suppression a échoué, veuillez réessayer")
+        displayError("La suppression a échoué, veuillez réessayer", modalGallery)
     }
 }
 
@@ -157,22 +159,12 @@ function handleValidation(works, displayGallery) {
 
         if (!fileModal.files[0] || !titleModal.value || !selectModal.value) {
 
-            let errorModal = document.querySelector("#modal-error-message")
+            displayError("Veuillez remplir tous les champs obligatoires", selectModal)
 
-            if (!errorModal) {
-
-                errorModal = document.createElement("p")
-                errorModal.id = "modal-error-message"
-                errorModal.setAttribute("aria-live", "polite")
-
-                selectModal.after(errorModal)
-            }
-
-            errorModal.textContent = "Veuillez remplir tous les champs obligatoires."
             return
         }
 
-        const existingError = document.querySelector("#modal-error-message")
+        const existingError = document.querySelector(".modal-error-message")
 
         if (existingError) {
             existingError.remove()
@@ -199,6 +191,8 @@ function handleValidation(works, displayGallery) {
         } catch (error) {
 
             console.error(error)
+
+            displayError("L'envoi a échoué, veuillez réessayer", selectModal)
         }
     })
 }
@@ -235,4 +229,20 @@ function displayPreview() {
 
         imagePreview.classList.add("is-active")
     })
+}
+
+function displayError(message, anchor) {
+
+    let error = anchor.parentElement.querySelector(".modal-error-message")
+
+    if (!error) {
+
+        error = document.createElement("p")
+        error.classList.add("modal-error-message")
+        error.setAttribute("aria-live", "polite")
+
+        anchor.after(error)
+    }
+
+    error.textContent = message
 }
