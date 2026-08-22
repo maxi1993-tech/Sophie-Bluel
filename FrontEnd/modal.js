@@ -153,6 +153,17 @@ function handleValidation(works, displayGallery) {
     const titleModal = document.querySelector("#modal-title-input")
     const fileModal = document.querySelector("#modal-input")
     const selectModal = document.querySelector("#modal-category-select")
+    const buttonValidate = document.querySelector("#modal-validate-form")
+
+    formModal.addEventListener("input", () => {
+
+        if (fileModal.value && titleModal.value && selectModal.value) {
+
+            buttonValidate.classList.add("modal-button-valid")
+        } else {
+            buttonValidate.classList.remove("modal-button-valid")
+        }
+    })
 
     formModal.addEventListener("submit", async (event) => {
         event.preventDefault()

@@ -467,16 +467,24 @@ footer nav ul {
 	transition: background-color 0.2s;
 }
 
-#modal-validate-form {
+.modal-button-invalid {
 	background-color: #A7A7A7;
+}
+
+.modal-button-invalid:hover{
+	background-color: #838282;
+}
+
+.modal-button-valid {
+	background-color: #1D6154;
+}
+
+.modal-button-valid:hover {
+	background-color: #10443b;
 }
 
 .button-next:hover {
 	background-color: #0E3F35;
-}
-
-#modal-validate-form:hover {
-	background-color: #838282;
 }
 
 .modal-separator {
