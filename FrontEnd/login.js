@@ -1,6 +1,11 @@
 import { fetchLogin } from './api.js'
 
-// Écoute l'envoi du formulaire de connexion
+/**
+ * Écoute l'envoi du formulaire de connexion.
+ *
+ * @function listenSubmit
+ * @returns {void}
+ */
 function listenSubmit() {
 
     const loginForm = document.querySelector(".login-form")
@@ -13,6 +18,12 @@ function listenSubmit() {
     })
 }
 
+/**
+ * Récupère les valeurs saisies dans le formulaire de connexion.
+ *
+ * @function getInputValues
+ * @returns {{email: string, password: string}} Objet contenant l'adresse e-mail et le mot de passe.
+ */
 function getInputValues() {
 
     const email = document.querySelector("#email").value
@@ -21,17 +32,35 @@ function getInputValues() {
     return { email, password }
 }
 
+/**
+ * Enregistre le token d'authentification dans le stockage de session.
+ *
+ * @function saveToken
+ * @param {string} token - Token d'authentification à enregistrer.
+ * @returns {void}
+ */
 function saveToken(token) {
 
     sessionStorage.setItem("token", token)
 }
 
+/**
+ * Redirige l'utilisateur vers la page d'accueil.
+ *
+ * @function redirectUser
+ * @returns {void}
+ */
 function redirectUser() {
 
     window.location.href = "./index.html"
 }
 
-// Affiche un message d'erreur si la connexion échoue
+/**
+ * Affiche un message d'erreur lorsque la connexion échoue.
+ *
+ * @function handleError
+ * @returns {void}
+ */
 function handleError() {
 
     let errorLogin = document.querySelector(".error-login")
@@ -50,7 +79,13 @@ function handleError() {
     errorLogin.textContent = "Veuillez corriger vos identifiants de connexion"
 }
 
-// Authentifie l'utilisateur puis le redirige
+/**
+ * Authentifie l'utilisateur, enregistre son token puis le redirige.
+ *
+ * @async
+ * @function handleLogin
+ * @returns {Promise<void>}
+ */
 async function handleLogin() {
 
     try {
@@ -70,6 +105,12 @@ async function handleLogin() {
     }
 }
 
+/**
+ * Initialise le formulaire de connexion.
+ *
+ * @function startLogin
+ * @returns {void}
+ */
 function startLogin() {
 
     listenSubmit()

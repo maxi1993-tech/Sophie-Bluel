@@ -1,3 +1,9 @@
+/**
+ * Récupère le token d'authentification depuis le stockage de session.
+ *
+ * @function getToken
+ * @returns {string|null} Token d'authentification ou null si aucun token n'est présent.
+ */
 function getToken() {
 
     const token = sessionStorage.getItem("token")
@@ -5,6 +11,12 @@ function getToken() {
     return token
 }
 
+/**
+ * Affiche la bannière noire indiquant que le mode édition est actif.
+ *
+ * @function displayBlackBanner
+ * @returns {void}
+ */
 function displayBlackBanner() {
 
     const body = document.querySelector("body")
@@ -18,6 +30,12 @@ function displayBlackBanner() {
     body.prepend(editionClone)
 }
 
+/**
+ * Masque les boutons de filtres en vidant leur conteneur.
+ *
+ * @function hideFilters
+ * @returns {void}
+ */
 function hideFilters() {
 
     const filters = document.querySelector(".filters")
@@ -25,6 +43,12 @@ function hideFilters() {
     filters.replaceChildren()
 }
 
+/**
+ * Ajoute le bouton permettant de modifier le contenu du portfolio.
+ *
+ * @function editButton
+ * @returns {void}
+ */
 function editButton() {
 
     const wrapperPortfolio = document.querySelector(".wrapper-portfolio")
@@ -35,6 +59,12 @@ function editButton() {
     wrapperPortfolio.appendChild(editionButtonClone)
 }
 
+/**
+ * Ajoute un écouteur d'événement au lien de déconnexion.
+ *
+ * @function logoutUser
+ * @returns {void}
+ */
 function logoutUser() {
 
     const logoutLink = document.querySelector(".logout")
@@ -47,6 +77,12 @@ function logoutUser() {
     })
 }
 
+/**
+ * Initialise le mode édition si un token d'authentification est présent.
+ *
+ * @function setupEditionMode
+ * @returns {void}
+ */
 export function setupEditionMode() {
 
     const token = getToken()

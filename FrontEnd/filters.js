@@ -1,86 +1,99 @@
-// Construit les boutons de filtres par catégorie
+/**
+ * Construit les boutons de filtres par catégorie
+ * 
+ * @function createButtons
+ * @param {object[]} categoriesList - La liste des catégories de filtre
+ * @param {number} categoriesList[].id - Identifiant de la catégorie.
+ * @param {string} categoriesList[].name - Nom de la catégorie affiché sur le bouton.
+ * @returns {void}
+ */
 export function createButtons(categoriesList) {
 
-    // récupère conteneur filters
     const filters = document.querySelector(".filters")
 
-    // vide conteneur filters
     filters.replaceChildren()
 
-    // récupère le template HTML
     const buttonTemplate = document.getElementById("button-template")
 
-    // crée un conteneur temporaire en mémoire
     const virtualBox = document.createDocumentFragment()
 
-    // crée nouvelle id et copie du nouveau tableau
     const allCategories = [{ id: 0, name: "Tous" }, ...categoriesList]
 
-    // parcours toutes les categories
     allCategories.forEach(categorie => {
 
-        // duplique le template
         const buttonClone = buttonTemplate.content.cloneNode(true)
 
-        // récupère les éléments du clone
         const button = buttonClone.querySelector("button")
 
-        // remplit le clone
         button.textContent = categorie.name
         button.dataset.categoryId = categorie.id
 
-        // ajout de la class selected
         if (categorie.id === 0) {
             button.classList.add("filter-button-selected")
         }
 
-        // ajoute le clone au conteneur
         virtualBox.appendChild(buttonClone)
     })
-    // ajoute le conteneur virtuel dans le conteneur filter
+
     filters.appendChild(virtualBox)
 }
 
-// Écoute l'événement "click" sur chaque bouton
+/**
+ * Écoute l'événement "click" sur chaque bouton
+ * 
+ * @function listenButtons
+ * @param {object[]} works - La liste des travaux
+ * @param {number} works[].categoryId - Identifiant de la catégorie du travail.
+ * @param {function} displayGallery - La fonction displayGallery transmise à filterWorks
+ * @returns {void}
+ */
 export function listenButtons(works, displayGallery) {
 
-    // Récupère les boutons
     const buttons = document.querySelectorAll(".filter-button")
 
-    // Parcours chaque boutons
     buttons.forEach(button => {
 
-        // écoute les boutons
         button.addEventListener("click", () => {
-            console.log("### bouton cliqué ###", button.textContent, Number(button.dataset.categoryId))
 
             setActiveButton(button)
-
             filterWorks(button, works, displayGallery)
         })
     })
 }
 
-// Déplace la classe du bouton sélectionné
+/**
+ * Retire la classe du bouton précédemment sélectionné et l'ajoute au bouton cliqué.
+ * 
+ * @function setActiveButton
+ * @param {HTMLElement} button - Bouton de filtre qui vient d'être cliqué.
+ * @returns {void}
+ */
 function setActiveButton(button) {
 
-    // récupère le bouton sélectionner
     const buttonSelected = document.querySelector(".filter-button-selected")
 
     if (buttonSelected) {
-        // retire le bouton sélectionner
-        buttonSelected.classList.remove("filter-button-selected")
 
+        buttonSelected.classList.remove("filter-button-selected")
     }
-    // ajoute le bouton sélectionner au bouton click
+
     button.classList.add("filter-button-selected")
 
 }
 
-// Filtre les projets par rapport à la catégorie cliquée
+/**
+ * Filtre les travaux par rapport à la catégorie cliquée et les transmet à la
+ * fonction d'affichage de la galerie.
+ * 
+ * @function filterWorks
+ * @param {HTMLElement} button - Bouton de filtre.
+ * @param {object[]} works - Liste complète des travaux.
+ * @param {number} works[].categoryId - Identifiant de la catégorie du travail.
+ * @param {function} displayGallery - Fonction permettant d'afficher les travaux filtrés.
+ * @returns {void}
+ */
 function filterWorks(button, works, displayGallery) {
-    
-    // dataset renvoie une chaîne, Number la convertit pour comparer avec categoryId
+
     const buttonId = Number(button.dataset.categoryId)
 
     if (buttonId === 0) {

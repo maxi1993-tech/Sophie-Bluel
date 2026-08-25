@@ -4,6 +4,13 @@ import { createButtons, listenButtons } from './filters.js'
 import { setupEditionMode } from './edition.js'
 import { startModal } from './modal.js'
 
+/**
+ * Initialise l'application et coordonne les différents modules.
+ *
+ * @function start
+ * @async
+ * @returns {Promise<void>}
+ */
 async function start() {
 
     try {

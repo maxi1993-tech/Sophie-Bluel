@@ -1,5 +1,11 @@
 import { fetchAdd, fetchDelete } from './api.js'
 
+/**
+ * Écoute les clics sur l'overlay de la modale pour permettre sa fermeture.
+ *
+ * @function listenOverlay
+ * @returns {void}
+ */
 function listenOverlay() {
 
     const modalOverlay = document.querySelector(".modal-overlay")
@@ -11,6 +17,12 @@ function listenOverlay() {
     })
 }
 
+/**
+ * Ferme la modale et met à jour son état d'accessibilité.
+ *
+ * @function closeModal
+ * @returns {void}
+ */
 function closeModal() {
 
     const modalContainer = document.querySelector("#modal-container")
@@ -18,6 +30,13 @@ function closeModal() {
     modalContainer.ariaHidden = "true"
 }
 
+/**
+ * Ouvre la modale, affiche les travaux et active leurs boutons de suppression.
+ *
+ * @function openModal
+ * @param {object[]} works - Liste des travaux à afficher dans la modale.
+ * @returns {void}
+ */
 function openModal(works) {
 
     const modalContainer = document.querySelector("#modal-container")
@@ -28,6 +47,13 @@ function openModal(works) {
     listenDeleteButtons(works)
 }
 
+/**
+ * Bascule entre la galerie et le formulaire de la modale.
+ *
+ * @function switchModal
+ * @param {object[]} works - Liste des travaux à afficher dans la modale.
+ * @returns {void}
+ */
 function switchModal(works) {
 
     const modalWrapper = document.querySelector("#modal-wrapper")
@@ -53,6 +79,13 @@ function switchModal(works) {
     listenDeleteButtons(works)
 }
 
+/**
+ * Affiche les travaux sous forme de miniatures dans la galerie de la modale.
+ *
+ * @function displayGalleryModal
+ * @param {object[]} works - Liste des travaux à afficher.
+ * @returns {void}
+ */
 function displayGalleryModal(works) {
 
     const modalGalleryMiniatures = document.querySelector(".modal-gallery-miniatures")
@@ -74,6 +107,15 @@ function displayGalleryModal(works) {
     modalGalleryMiniatures.insertAdjacentHTML("beforeend", modalMiniatures)
 }
 
+/**
+ * Initialise les interactions de la modale et les options du formulaire.
+ *
+ * @function startModal
+ * @param {object[]} works - Liste des travaux.
+ * @param {object[]} categories - Liste des catégories.
+ * @param {function} displayGallery - Fonction permettant d'afficher les travaux dans la galerie principale.
+ * @returns {void}
+ */
 export function startModal(works, categories, displayGallery) {
 
     const buttonModifier = document.querySelector(".edition-button")
@@ -104,6 +146,13 @@ export function startModal(works, categories, displayGallery) {
     })
 }
 
+/**
+ * Ajoute un écouteur "click" aux boutons de suppression des travaux.
+ *
+ * @function listenDeleteButtons
+ * @param {object[]} works - Liste des travaux à gérer.
+ * @returns {void}
+ */
 function listenDeleteButtons(works) {
 
     const buttonsDelete = document.querySelectorAll(".delete-button")
@@ -118,6 +167,15 @@ function listenDeleteButtons(works) {
     })
 }
 
+/**
+ * Supprime un travail via l'API puis met à jour les galeries.
+ *
+ * @async
+ * @function handleDelete
+ * @param {string} id - Identifiant du travail à supprimer.
+ * @param {object[]} works - Liste des travaux.
+ * @returns {Promise<void>}
+ */
 async function handleDelete(id, works) {
 
     try {
@@ -134,6 +192,14 @@ async function handleDelete(id, works) {
     }
 }
 
+/**
+ * Met à jour les galeries après la suppression d'un travail.
+ *
+ * @function updateGallery
+ * @param {string} id - Identifiant du travail supprimé.
+ * @param {object[]} works - Liste des travaux à mettre à jour.
+ * @returns {void}
+ */
 function updateGallery(id, works) {
 
     const workGallery = document.querySelector(`.gallery figure[data-work-id="${id}"]`)
@@ -147,6 +213,14 @@ function updateGallery(id, works) {
     works.splice(positionWorkDelete, 1)
 }
 
+/**
+ * Gère la validation du formulaire d'ajout d'un travail.
+ *
+ * @function handleValidation
+ * @param {object[]} works - Liste des travaux à mettre à jour après l'ajout.
+ * @param {function} displayGallery - Fonction permettant de mettre à jour la galerie principale.
+ * @returns {void}
+ */
 function handleValidation(works, displayGallery) {
 
     const formModal = document.querySelector("#modal-add-form")
@@ -208,6 +282,12 @@ function handleValidation(works, displayGallery) {
     })
 }
 
+/**
+ * Affiche un aperçu de l'image sélectionnée dans le formulaire.
+ *
+ * @function displayPreview
+ * @returns {void}
+ */
 function displayPreview() {
 
     const formModal = document.querySelector("#modal-add-form")
@@ -242,6 +322,14 @@ function displayPreview() {
     })
 }
 
+/**
+ * Affiche un message d'erreur à proximité d'un élément donné.
+ *
+ * @function displayError
+ * @param {string} message - Message d'erreur à afficher.
+ * @param {HTMLElement} anchor - Élément auquel le message d'erreur est rattaché.
+ * @returns {void}
+ */
 function displayError(message, anchor) {
 
     let error = anchor.parentElement.querySelector(".modal-error-message")
